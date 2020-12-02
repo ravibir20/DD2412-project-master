@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+<section class="text-gray-700 body-font">
+    <div class="container px-5 py-10 mx-auto">
+      <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Squad-CAM</h1>
+            <p>
+              We have developed an explanation method built upon <a href="https://arxiv.org/abs/1610.02391">Grad-CAM</a>. 
+              The method explains why an AI has made the prediction that it made. It allows us to understand why complicated deep learning methods behave in the way that they do.
+              This website compares three different explanation methods (Guided Backpropagation, Guided Grad-CAM and Guided Squad-CAM).
+              The aim is to see which explanation provides the most intuative explanation for humans.
+            </p>
+            <hr>
+            <p>
+              Please help us in our research. Answer some of our questions. Here's how it works:
+            </p>
+            <hr>
+            <span class="header">Questions:</span>
+            <p>
+              We will ask you what you see on the image. If you're not sure, just pick one. You will only be able to answer 30 questions in each questionere.
+            </p>
+            <hr>
+            <span class="header">Comparisons:</span>
+            <p>
+               We will ask you to say which robot has provided the best explanation of a prediction. For example: which image represents a dog the best.
+            </p>
+            <a href="{% url 'answer_questions' %}" class="bg-blue-500 hover:bg-blue-700 mt-5 text-white font-bold py-2 px-4 rounded">Answer questions</a>
+            <a href="{% url 'compare_models' %}" class="bg-blue-500 hover:bg-blue-700 mt-5 text-white font-bold py-2 px-4 rounded">Answer comparisons</a>
+             <a href="{% url 'results' %}" class="bg-blue-500 hover:bg-blue-700 mt-5 text-white font-bold py-2 px-4 rounded">See results</a>
+             <a href="{% url 'results_comparison' %}" class="bg-blue-500 hover:bg-blue-700 mt-5 text-white font-bold py-2 px-4 rounded">Compare Models</a>
+            
+      </div>
+    </div>
+  </section>
+{% endblock %}

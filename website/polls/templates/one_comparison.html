@@ -1,0 +1,67 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+<section class="text-gray-700 body-font">
+    <div class="container px-5 py-10 mx-auto">
+      <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Both robots predicted {{prediction}}</h1>
+            <div class="comparison-holder">
+                <div>
+                    <h1><span class="green">Robot A</span>based it's decision on</h1>
+                    <img src="{{target_imageA.url}}"/>
+                </div>
+                <div>
+                    <h1><span class="red">Robot B</span>based it's decision on</h1>
+                    <img src="{{target_imageB.url}}"/>
+                </div>
+            </div>
+            <br/>
+
+            <form method="POST">
+                <div class="some-class">
+                    <div class="query-row">
+                        <input type="radio" class="comparison_input" id="comparison_input_2" name="answer" value="2">
+                        <label for="comparison_input_2"><span class="green">Robot A</span> seems clearly more reasonable than <span class="red">Robot B</span></label><br>
+                    </div>
+                    
+                    <div class="query-row">
+                        <input type="radio" class="comparison_input" id="comparison_input_1" name="answer" value="1">
+                        <label for="comparison_input_1"><span class="green">Robot A</span> seems slightly more reasonable than <span class="red">Robot B</span></label><br>
+                    </div>
+
+                    <div class="query-row">
+                        <input type="radio" class="comparison_input" id="comparison_input_0" name="answer" value="0">
+                        <label for="comparison_input_0">Both robots seems equally reasonable</label><br>
+                    </div>
+                    
+                    <div class="query-row">
+                        <input type="radio" class="comparison_input" id="comparison_input_n1" name="answer" value="-1">
+                        <label for="comparison_input_n1"><span class="red">Robot B</span> seems slightly more reasonable than <span class="green">Robot A</span></label><br>
+                    </div>
+
+                    <div class="query-row">
+                        <input type="radio" class="comparison_input" id="comparison_input_n2" name="answer" value="-2">
+                        <label for="comparison_input_n2"><span class="red">Robot B</span> seems clearly more reasonable than <span class="green">Robot A</span></label><br>
+                    </div>
+
+                    <div style="display:none;">
+                        <input type="text" id="modelA" value="{{modelA}}" name="modelA">
+                        <input type="text" id="modelB" value="{{modelB}}" name="modelB">
+                        <input type="text" id="image_id" value="{{image.id}}" name="image_id">
+                        <input type="text" id="explanation" value="{{explanation}}" name="explanation">
+                      </div>
+
+                </div>
+                <br/>
+                <input type="submit" class="bg-blue-500 hover:bg-blue-700 mt-5 text-white font-bold py-2 px-4 rounded" value="Next">
+            </form>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+
+{% block javascript %}
+
+{% endblock %}

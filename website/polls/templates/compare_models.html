@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+<section class="text-gray-700 body-font">
+    <div class="container px-5 py-10 mx-auto">
+      <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Squad-CAM results</h1>
+
+		<table>
+			<tr>
+				<th>Model</th>
+				<th>Score</th>
+			</tr>
+			<tr>
+				<td>VGG</td>
+				<td>{{data_model.vgg_percent|floatformat:2}}</td>
+			</tr>
+			<tr>
+				<td>Resnet</td>
+				<td>{{data_model.resnet_percent|floatformat:2}}</td>
+			</tr>
+		</table>
+            <table>
+		<tr>
+			<th>Comparison</th>
+			<th>Score</th>
+		</tr>
+            {% for data in data_one %}
+		<tr>
+			<td>{{data.config}}</td>
+			<td>{{data.average|floatformat:2}}</td> 
+		</tr>
+            {% endfor %}
+	    </table>
+      </div>
+    </div>
+  </section>
+{% endblock %}

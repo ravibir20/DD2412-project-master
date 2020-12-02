@@ -1,0 +1,48 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+<section class="text-gray-700 body-font">
+    <div class="container px-5 py-10 mx-auto">
+      <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">What do you see?</h1>
+            <img src="{{target_image.url}}"></img><br/>
+            <form method="POST">
+                <div class="some-class">
+    {% if random < 0.5 %}
+    <div class="query-row">
+			<input type="radio" class="choice{{image.id}}" id="{{image.id}}_one" name="answer" value="{{image.choice_one}}">
+      <label for="{{image.id}}_one">{{image.choice_one}}</label><br>
+    </div>
+    <div class="query-row">
+			<input type="radio" class="choice{{image.id}}" id="{{image.id}}_two" name="answer" value="{{image.choice_two}}">
+      <label for="{{image.id}}_two">{{image.choice_two}}</label><br>
+    </div>
+    {% else %}
+    <div class="query-row">
+			<input type="radio" class="choice{{image.id}}" id="{{image.id}}_two" name="answer" value="{{image.choice_two}}">
+      <label for="{{image.id}}_two">{{image.choice_two}}</label><br>
+    </div>
+    <div class="query-row">
+			<input type="radio" class="choice{{image.id}}" id="{{image.id}}_one" name="answer" value="{{image.choice_one}}">
+      <label for="{{image.id}}_one">{{image.choice_one}}</label>
+    </div>
+		{% endif %}
+                    <div style="display:none;">
+                      <input type="text" id="model" value="{{model}}" name="model">
+                      <input type="text" id="image_id" value="{{image.id}}" name="image_id">
+                      <input type="text" id="explanation" value="{{explanation}}" name="explanation">
+                    </div>
+                </div>
+                <br/>
+                <input type="submit" class="bg-blue-500 hover:bg-blue-700 mt-5 text-white font-bold py-2 px-4 rounded" value="Next">
+            </form>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+
+{% block javascript %}
+
+{% endblock %}

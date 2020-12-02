@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+<section class="text-gray-700 body-font">
+    <div class="container px-5 py-10 mx-auto">
+      <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Accuracy results</h1>
+        <table>
+          <tr>
+              <th></th>
+              <th>VGG</th>
+              <th>Resnet</th>
+            </tr>
+            <tr>
+              <th>Guided Backprop</th>
+              <td>{{total.vgg_backprop_correct}} ({{total.vgg_backprop_percent|floatformat:2}}%)</td>
+              <td>{{total.resnet_backprop_correct}} ({{total.resnet_backprop_percent|floatformat:2}}%)</td>
+            </tr>
+            <tr>
+              <th>Guided Gradcam</th>
+              <td>{{total.vgg_gradcam_correct}} ({{total.vgg_gradcam_percent|floatformat:2}}%)</td>
+              <td>{{total.resnet_gradcam_correct}} ({{total.resnet_gradcam_percent|floatformat:2}}%)</td>
+            </tr>
+            <tr>
+              <th>Guided Squadcam</th>
+              <td>{{total.vgg_squadcam_correct}} ({{total.vgg_squadcam_percent|floatformat:2}}%)</td>
+              <td>{{total.resnet_squadcam_correct}} ({{total.resnet_squadcam_percent|floatformat:2}}%)</td>
+            </tr>
+      </table>
+      </div>
+    </div>
+  </section>
+{% endblock %}
